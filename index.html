@@ -3,16 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idea Catcher</title>
+    <title>Sanat ve Yaratıcılık Topluluğu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-size: 16px;
+            color: #555;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fikrini Paylaş!</h1>
-    <textarea id="fikirInput" placeholder="Fikrini buraya yaz..."></textarea><br><br>
-    <button onclick="gonder()">Gönder</button>
 
-    <div id="cevap"></div>
+<header>
+    <h1>Sanat ve Yaratıcılık Topluluğu</h1>
+    <p>Sanatçılar, Yazarlar, Müzisyenler ve Tasarımcılar Bir Araya Geliyor</p>
+</header>
 
-    <!-- JavaScript dosyasını dahil et -->
-    <script src="script.js"></script>
+<div class="container">
+    <h2>Proje Paylaşımı ve İşbirliği Arayışı</h2>
+    <p>Sanat ve Yaratıcılık Topluluğu, sanatçılar, müzisyenler, yazarlar, grafik tasarımcılar gibi yaratıcı projeler üzerinde çalışan insanları bir araya getiriyor. Burada, sanat projeleriniz için işbirliği yapmak üzere yeni partnerler bulabilir, yaratıcı fikirlerinizi paylaşabilirsiniz. Hedefimiz, farklı alanlardan gelen bireylerin bir araya gelerek sanatsal projelerde birlikte çalışmasını sağlamak.</p>
+
+    <h3>Projenizi Paylaşın!</h3>
+    <p>Eğer bir sanat projeniz varsa ve bunu daha geniş bir kitleyle paylaşarak işbirliği yapmak istiyorsanız, aşağıdaki formu doldurun. İlginizi çeken partnerlerle eşleşebilirsiniz.</p>
+
+    <div class="form-container">
+        <form id="projectForm">
+            <div class="form-group">
+                <label for="name">Adınız:</label>
+                <input type="text" id="name" name="name" placeholder="Adınızı girin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="projectTitle">Proje Başlığı:</label>
+                <input type="text" id="projectTitle" name="projectTitle" placeholder="Proje başlığını girin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Proje Açıklaması:</label>
+                <textarea id="description" name="description" rows="4" placeholder="Projenizin detaylarını yazın..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="skillsNeeded">Gerekli Yetenekler:</label>
+                <input type="text" id="skillsNeeded" name="skillsNeeded" placeholder="İhtiyaç duyduğunuz yetenekleri girin (örn. Grafik Tasarım, Yazılım, Müzik, vb.)" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Projenizi Paylaşın</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Sanat ve Yaratıcılık Topluluğu. Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="script.js"></script> <!-- JavaScript dosyanızı bağladık. -->
+
 </body>
 </html>

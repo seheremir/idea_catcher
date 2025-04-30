@@ -1,20 +1,33 @@
-async function gonder() {
-    const fikir = document.getElementById("fikirInput").value;
-    const cevapDiv = document.getElementById("cevap");
-    cevapDiv.innerHTML = "⏳ AI analizi yapılıyor...";
-  
-    try {
-      const response = await fetch("https://seheremir.app.n8n.cloud/webhook-test/idea_catcher", {
+document.getElementById("projectForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Formun default gönderimini engeller
+
+    const name = document.getElementById("name").value;
+    const projectTitle = document.getElementById("projectTitle").value;
+    const description = document.getElementById("description").value;
+    const skillsNeeded = document.getElementById("skillsNeeded").value;
+
+    const projectData = {
+        name: name,
+        projectTitle: projectTitle,
+        description: description,
+        skillsNeeded: skillsNeeded
+    };
+
+    fetch("https://seheremir.app.n8n.cloud/webhook-test/idea_catcher", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fikir })  // JSON olarak gönderiyoruz
-      });
-  
-      if (!response.ok) throw new Error("AI cevabı alınamadı.");
-      const data = await response.json();
-      cevapDiv.innerHTML = "🧠 AI Yorumu:<br><br>" + data.analiz;
-    } catch (err) {
-      cevapDiv.innerHTML = "❌ Hata: " + err.message;
-    }
-  }
-  
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(projectData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Proje başarıyla gönderildi!");
+        // Formu temizle
+        document.getElementById("projectForm").reset();
+    })
+    .catch(error => {
+        console.error("Hata oluştu:", error);
+        alert("Proje gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+    });
+});
