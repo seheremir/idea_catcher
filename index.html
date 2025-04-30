@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fikrini Gönder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+    }
+    #cevap {
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      background: #f7f7f7;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>💡 Fikrinizi Yazın</h2>
+  <textarea id="fikirInput" placeholder="Bir yapay zeka projesi fikri yazın..."></textarea><br />
+  <button onclick="gonder()">Gönder</button>
+
+  <div id="cevap"></div>
+
+  <script>
+    async function gonder() {
+      const fikir = document.getElementById("fikirInput").value;
+      const cevapDiv = document.getElementById("cevap");
+      cevapDiv.innerHTML = "⏳ AI analizi yapılıyor...";
+
+      try {
+        // Burada eski URL'yi yeni URL ile değiştirdik
+        const response = await fetch("https://seheremir.app.n8n.cloud/webhook-test/idea_catcher", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fikir })
+        });
+
+        if (!response.ok) throw new Error("AI cevabı alınamadı.");
+        const data = await response.json();
+        cevapDiv.innerHTML = "🧠 AI Yorumu:<br><br>" + data.analiz;
+      } catch (err) {
+        cevapDiv.innerHTML = "❌ Hata: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
